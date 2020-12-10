@@ -81,26 +81,29 @@ https://github.com/alchemycodelab/alchemy-fsjs-december-2020/tree/main/08_many-t
 1. Add sample GET endpoint to app.js
 
 1. Add tables to setup.sql:
-
-1. trees table
-    1. DROP TABLE...CASCADE;
-    1. CREATE TABLE
-        1. id
-        1. species
-        1. location
-1. birds table
-    1. DROP TABLE....;
-    1. CREATE TABLE
-    1. id
-    1. bird_name
-    1. color
-    1. tree_id
+    1. trees table
+        1. DROP TABLE...CASCADE;
+        1. CREATE TABLE
+            1. id
+            1. tree_species
+            1. rings
+    1. birds table
+        1. DROP TABLE...CASCADE;
+        1. CREATE TABLE
+            1. id
+            1. bird_species
+            1. color
+    1. trees_birds table
+        1. DROP TABLE...;
+        1. CREATE TABLE
+            1. tree_id
+            1. bird_id
 
 1. Add class Tree model to trees.js
     1. Add constructor to Tree model
         1. id
-        1. species
-        1. location
+        1. tree_species
+        1. rings
     1. Add CRUD to Tree:
         1. Create/insert/post
             1. POST test in trees.test.js
