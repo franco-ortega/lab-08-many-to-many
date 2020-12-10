@@ -37,7 +37,7 @@ https://github.com/alchemycodelab/alchemy-fsjs-december-2020/tree/main/08_many-t
     1. Copy repo link
 
 1. Add remote repo to local repo:
-    1. git remote add origin https://github.com/franco-ortega/lab-07-one-to-many.git
+    1. *git remote add origin https://github.com/franco-ortega/lab-08-many-to-many.git*
 
 1. ACP:
     1. *git add -A*
@@ -68,23 +68,13 @@ https://github.com/alchemycodelab/alchemy-fsjs-december-2020/tree/main/08_many-t
 
 ## Overview
 
-1. Create local repo
+1. Setup
 
-1. Install dependendcies
-
-1. Create README
-
-1. Create remote repo
-
-1. Connect remote repo to local repo
-
-1. Create folders and files
-
-1. Create server.js
+1. Write server.js
 
 1. Update package.json
 
-1. Update app.js to connect with server.js
+1. Write app.js to connect with server.js
 
 1. Add sample test to app.test.js
 
@@ -162,3 +152,5 @@ https://github.com/alchemycodelab/alchemy-fsjs-december-2020/tree/main/08_many-t
 1. Add double JOIN GET one/findById() of Tree model
     1. Update GET one test in trees.test.js
     1. Update findById() function in trees.js
+
+1. CELEBRATE!!!!
