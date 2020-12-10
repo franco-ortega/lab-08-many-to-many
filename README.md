@@ -39,31 +39,126 @@ https://github.com/alchemycodelab/alchemy-fsjs-december-2020/tree/main/08_many-t
 1. Add remote repo to local repo:
     1. git remote add origin https://github.com/franco-ortega/lab-07-one-to-many.git
 
-
 1. ACP:
+    1. *git add -A*
+    1. *git commit -m 'add initial commit to main'*
+    1. *git push origin main*
 
-git add -A
-git commit -m 'add initial commit'
-git push origin main
-Create dev branch:
+1. Create dev branch:
+    1. *git checkout -b dev*
 
-git checkout -b dev
-Connect to pgAdmin
+1. Connect to pgAdmin
 
-Create top level files:
+1. Create top level files:
+    1. server.js
 
-server.js
-Create folders & files:
+1. Create folders & files:
+    1. **lib**
+        1. app.js
+    1. **models**
+        1. trees.js
+        1. birds.js
+    1. **sql**
+        1. setup.sql
+    1. **__ tests__**
+        1. trees.test.js
+        1. birds.test.js
+1. ACP to dev branch
 
-lib
-app.js
-models
-flowers.js
-bees.js
-sql
-setup.sql
-__ tests__
-app.test.js
-or:
-flowers.test.js
-bees.test.js
+
+## Overview
+
+1. Create local repo
+
+1. Install dependendcies
+
+1. Create README
+
+1. Create remote repo
+
+1. Connect remote repo to local repo
+
+1. Create folders and files
+
+1. Create server.js
+
+1. Update package.json
+
+1. Update app.js to connect with server.js
+
+1. Add sample test to app.test.js
+
+1. Add sample GET endpoint to app.js
+
+1. Add tables to setup.sql:
+
+1. trees table
+    1. DROP TABLE...CASCADE;
+    1. CREATE TABLE
+        1. id
+        1. species
+        1. location
+1. birds table
+    1. DROP TABLE....;
+    1. CREATE TABLE
+    1. id
+    1. bird_name
+    1. color
+    1. tree_id
+
+1. Add class Tree model to trees.js
+    1. Add constructor to Tree model
+        1. id
+        1. species
+        1. location
+    1. Add CRUD to Tree:
+        1. Create/insert/post
+            1. POST test in trees.test.js
+            1. insert() in trees.js
+            1. POST endpoint in app.js
+        1. Read/find/findById/GET
+            1. GET all test in trees.test.js
+            1. find() in trees.js
+            1. GET all endpoint in app.js
+            1. GET one test in trees.test.js
+            1. findById() in trees.js
+            1. GET one endpoint in app.js
+        1. Update/update/PUT
+            1. PUT test in trees.test.js
+            1. update() in trees.js
+            1. PUT endpoint in app.js
+        1. Delete/delete/DELETE
+            1. DELETE test in trees.test.js
+            1. delete() in trees.js
+            1. DELETE endpoint in app.js
+
+1. Add class Bird model to birds.js
+    1. Add constructor to Bird model
+        1. id
+        1. bird_name
+        1. color
+        1. tree_id
+    1. Add CRUD to Bird:
+        1. Create/insert/post
+            1. POST test in birds.test.js
+            1. insert() in birds.js
+            1. POST endpoint in app.js
+        1. Read/find/findById/GET
+            1. GET all test in birds.test.js
+            1. find() in birds.js
+            1. GET all endpoint in app.js
+            1. GET one test in birds.test.js
+            1. findById() in birds.js
+            1. GET one endpoint in app.js
+        1. Update/update/PUT
+            1. PUT test in birds.test.js
+            1. update() in birds.js
+            1. PUT endpoint in app.js
+        1. Delete/delete/DELETE
+            1. DELETE test in birds.test.js
+            1. delete() in birds.js
+            1. DELETE endpoint in app.js
+
+1. Add double JOIN GET one/findById() of Tree model
+    1. Update GET one test in trees.test.js
+    1. Update findById() function in trees.js
