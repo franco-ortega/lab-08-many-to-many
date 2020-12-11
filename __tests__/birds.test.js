@@ -1,6 +1,7 @@
 const fs = require('fs');
 const request = require('supertest');
 const app = require('../lib/app');
+const Bird = require('../lib/models/birds');
 const pool = require('../lib/utils/pool');
 
 describe('tests for app.js endpoints', () => {
@@ -34,6 +35,30 @@ describe('tests for app.js endpoints', () => {
       color: 'red'
     });
   });
+
+  it('get all birds with GET', async() => {
+    const birds = await Promise.all([
+      {
+        birdSpecies: 'tiger owl',
+        color: 'red'
+      },
+      {
+        birdSpecies: 'spotted vulture',
+        color: 'grey and orange'
+      },
+      {
+        birdSpecies: 'hummingbird',
+        color: 'purple'
+      }
+    ].map(bird => Bird.insert(bird)));
+
+    const res = await request(app)
+      .get('/api/v1/birds');
+
+    expect(res.body).toEqual(expect.arrayContaining(birds));
+    expect(res.body).toHaveLength(birds.length);
+  });
+
   
 
 
