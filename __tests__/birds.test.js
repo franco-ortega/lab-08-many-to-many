@@ -59,6 +59,21 @@ describe('tests for app.js endpoints', () => {
     expect(res.body).toHaveLength(birds.length);
   });
 
+  it('get one bird via GET', async() => {
+    const bird = await Bird.insert(
+      {
+        birdSpecies: 'spotted vulture',
+        color: 'grey and orange'
+      }
+    );
+
+    const res = await request(app)
+      .get(`/api/v1/birds/${bird.id}`);
+
+    expect(res.body).toEqual(bird);
+  });
+
+
   
 
 
