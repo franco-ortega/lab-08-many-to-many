@@ -9,17 +9,6 @@ describe('tests for app.js endpoints', () => {
       
   afterAll(() => pool.end());
 
-
-  // Sample test
-  it('sample test to check connection', () => {
-    return request(app)
-      .get('/')
-      .then(res => {
-        expect(res.body).toEqual({ climb: 'the trees' });
-      });
-
-  });
-
   // Bird tests: POST, GET all, GET one, PUT, DELETE
   it('create a new bird with POST', async() => {
     const res = await request(app)
@@ -73,7 +62,6 @@ describe('tests for app.js endpoints', () => {
     expect(res.body).toEqual(bird);
   });
 
-
   it('update one bird via PUT', async() => {
     const bird = await Bird.insert(
       {
@@ -113,14 +101,5 @@ describe('tests for app.js endpoints', () => {
 
     expect(res.body).toEqual(bird);
   });
-
-
-
-
-
-  
-
-
-
 
 });
