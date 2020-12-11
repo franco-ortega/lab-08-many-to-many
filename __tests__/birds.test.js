@@ -74,6 +74,35 @@ describe('tests for app.js endpoints', () => {
   });
 
 
+  it('update one bird via PUT', async() => {
+    const bird = await Bird.insert(
+      {
+        birdSpecies: 'redwood',
+        color: 675
+      }
+    );
+
+    const res = await request(app)
+      .put(`/api/v1/birds/${bird.id}`)
+      .send(
+        {
+          birdSpecies: 'redwood',
+          color: 999
+        }
+      );
+
+    expect(res.body).toEqual(
+      {
+        ...bird,
+        birdSpecies: 'redwood',
+        color: '999'
+      }
+    );
+  });
+
+
+
+
   
 
 
