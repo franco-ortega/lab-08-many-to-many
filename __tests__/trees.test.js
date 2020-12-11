@@ -47,29 +47,7 @@ describe('tests for app.js endpoints', () => {
 
     expect(res.body).toEqual(expect.arrayContaining(trees));
     expect(res.body).toHaveLength(trees.length);
-  });
-
-
-
-
-
-  // it('get one tree via GET', async() => {
-  //   const tree = await Tree.insert(
-  //     {
-  //       treeSpecies: 'elm',
-  //       rings: 49
-  //     }
-  //   );
-
-  //   const res = await request(app)
-  //     .get(`/api/v1/trees/${tree.id}`);
-
-  //   expect(res.body).toEqual(tree);
-  // });
-
-
-
-  
+  });  
 
   it('get one tree JOINed with birds via GET', async() => {
     await Promise.all([
@@ -103,9 +81,6 @@ describe('tests for app.js endpoints', () => {
       birds: expect.arrayContaining(['tiger owl', 'spotted vulture', 'hummingbird'])
     });
   });
-
-
-
 
   it('update one tree via PUT', async() => {
     const tree = await Tree.insert(
