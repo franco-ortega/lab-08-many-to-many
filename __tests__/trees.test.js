@@ -33,7 +33,7 @@ describe('tests for app.js endpoints', () => {
     expect(res.body).toEqual({
       id: '1',
       treeSpecies: 'oak',
-      rings: 105
+      rings: '105'
     });
 
   });
@@ -62,7 +62,7 @@ describe('tests for app.js endpoints', () => {
 
   });
 
-  it('get one flower via GET', async() => {
+  it('get one tree via GET', async() => {
     const tree = await Tree.insert(
       {
         treeSpecies: 'elm',
@@ -74,6 +74,33 @@ describe('tests for app.js endpoints', () => {
       .get(`/api/v1/trees/${tree.id}`);
 
     expect(res.body).toEqual(tree);
+  });
+
+
+  it('update one tree via PUT', async() => {
+    const tree = await Tree.insert(
+      {
+        treeSpecies: 'redwood',
+        rings: 675
+      }
+    );
+
+    const res = await request(app)
+      .put(`/api/v1/trees/${tree.id}`)
+      .send(
+        {
+          treeSpecies: 'redwood',
+          rings: 999
+        }
+      );
+
+    expect(res.body).toEqual(
+      {
+        ...tree,
+        treeSpecies: 'redwood',
+        rings: '999'
+      }
+    );
   });
 
 
