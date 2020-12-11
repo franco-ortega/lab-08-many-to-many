@@ -1,8 +1,15 @@
+const fs = require('fs');
 const request = require('supertest');
 const app = require('../lib/app');
-//const pool = require('..lib/utils/pool');
+const pool = require('../lib/utils/pool');
+//const Tree = require('../lib/models/trees');
+
 
 describe('tests for app.js endpoints', () => {
+  beforeEach(() => pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8')));
+      
+  afterAll(() => pool.end());
+
 
   // Sample test
   it('sample test to check connection', () => {
@@ -21,7 +28,7 @@ describe('tests for app.js endpoints', () => {
         treeSpecies: 'oak',
         rings: 105
       });
-
+console.log(res.body);
     expect(res.body).toEqual({
       id: '1',
       treeSpecies: 'oak',
