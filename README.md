@@ -128,9 +128,8 @@ https://github.com/alchemycodelab/alchemy-fsjs-december-2020/tree/main/08_many-t
 1. Add class Bird model to birds.js
     1. Add constructor to Bird model
         1. id
-        1. bird_name
+        1. bird_species
         1. color
-        1. tree_id
     1. Add CRUD to Bird:
         1. Create/insert/post
             1. POST test in birds.test.js
