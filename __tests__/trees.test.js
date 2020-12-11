@@ -3,6 +3,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const pool = require('../lib/utils/pool');
 const Tree = require('../lib/models/trees');
+const Bird = require('../lib/models/birds');
 
 describe('tests for app.js endpoints', () => {
   beforeEach(() => pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8')));
@@ -48,19 +49,63 @@ describe('tests for app.js endpoints', () => {
     expect(res.body).toHaveLength(trees.length);
   });
 
-  it('get one tree via GET', async() => {
+
+
+
+
+  // it('get one tree via GET', async() => {
+  //   const tree = await Tree.insert(
+  //     {
+  //       treeSpecies: 'elm',
+  //       rings: 49
+  //     }
+  //   );
+
+  //   const res = await request(app)
+  //     .get(`/api/v1/trees/${tree.id}`);
+
+  //   expect(res.body).toEqual(tree);
+  // });
+
+
+
+  
+
+  it('get one tree JOINed with birds via GET', async() => {
+    await Promise.all([
+      {
+        birdSpecies: 'tiger owl',
+        color: 'red'
+      },
+      {
+        birdSpecies: 'spotted vulture',
+        color: 'grey and orange'
+      },
+      {
+        birdSpecies: 'hummingbird',
+        color: 'purple'
+      }
+    ].map(bird => Bird.insert(bird)));
+
     const tree = await Tree.insert(
       {
         treeSpecies: 'elm',
-        rings: 49
+        rings: 49,
+        birds: ['tiger owl', 'spotted vulture', 'hummingbird']
       }
     );
 
     const res = await request(app)
       .get(`/api/v1/trees/${tree.id}`);
 
-    expect(res.body).toEqual(tree);
+    expect(res.body).toEqual({
+      ...tree,
+      birds: ['tiger owl', 'spotted vulture', 'hummingbird']
+    });
   });
+
+
+
 
   it('update one tree via PUT', async() => {
     const tree = await Tree.insert(
