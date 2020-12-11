@@ -103,6 +103,21 @@ describe('tests for app.js endpoints', () => {
     );
   });
 
+  it('delete one tree via DELETE', async() => {
+    const tree = await Tree.insert(
+      {
+        treeSpecies: 'elm',
+        rings: 49
+      }
+    );
+
+    const res = await request(app)
+      .delete(`/api/v1/trees/${tree.id}`);
+
+    expect(res.body).toEqual(tree);
+  });
+
+
 
 
 
