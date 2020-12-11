@@ -62,6 +62,21 @@ describe('tests for app.js endpoints', () => {
 
   });
 
+  it('get one flower via GET', async() => {
+    const tree = await Tree.insert(
+      {
+        treeSpecies: 'elm',
+        rings: 49
+      }
+    );
+
+    const res = await request(app)
+      .get(`/api/v1/trees/${tree.id}`);
+
+    expect(res.body).toEqual(tree);
+  });
+
+
 
 
 
