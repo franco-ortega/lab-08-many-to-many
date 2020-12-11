@@ -100,7 +100,7 @@ describe('tests for app.js endpoints', () => {
 
     expect(res.body).toEqual({
       ...tree,
-      birds: ['tiger owl', 'spotted vulture', 'hummingbird']
+      birds: expect.arrayContaining(['tiger owl', 'spotted vulture', 'hummingbird'])
     });
   });
 

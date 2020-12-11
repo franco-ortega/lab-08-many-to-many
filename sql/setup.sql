@@ -16,5 +16,6 @@ CREATE TABLE birds (
 
 CREATE TABLE trees_birds (
     tree_id BIGINT REFERENCES trees(id),
-    bird_id BIGINT REFERENCES birds(id)
+    bird_id BIGINT REFERENCES birds(id),
+    PRIMARY KEY(tree_id, bird_id)
 );
