@@ -77,8 +77,8 @@ describe('tests for app.js endpoints', () => {
   it('update one bird via PUT', async() => {
     const bird = await Bird.insert(
       {
-        birdSpecies: 'redwood',
-        color: 675
+        birdSpecies: 'hummingbird',
+        color: 'purple'
       }
     );
 
@@ -86,19 +86,34 @@ describe('tests for app.js endpoints', () => {
       .put(`/api/v1/birds/${bird.id}`)
       .send(
         {
-          birdSpecies: 'redwood',
-          color: 999
+          birdSpecies: 'hummingbird',
+          color: 'green'
         }
       );
 
     expect(res.body).toEqual(
       {
         ...bird,
-        birdSpecies: 'redwood',
-        color: '999'
+        birdSpecies: 'hummingbird',
+        color: 'green'
       }
     );
   });
+
+  it('delete one bird via DELETE', async() => {
+    const bird = await Bird.insert(
+      {
+        birdSpecies: 'hummingbird',
+        color: 'purple'
+      }
+    );
+
+    const res = await request(app)
+      .delete(`/api/v1/birds/${bird.id}`);
+
+    expect(res.body).toEqual(bird);
+  });
+
 
 
 
